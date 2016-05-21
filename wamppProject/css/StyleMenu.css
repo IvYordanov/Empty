@@ -1,0 +1,57 @@
+body {
+	background-image: url("../img/lava.jpg");
+	
+}
+
+
+#main-menu, .sub-menu {
+	list-style: none;
+	margin: 0;
+	padding: 0;	
+}
+#main-menu li {
+	float: left;
+	margin-right: 3px;
+	position: relative;
+}
+#main-menu li a {
+	background: url("../img/normal.jpg") repeat-x;
+	border: 1px solid #c15e20;
+	color: #f3f3f3;
+	font-size: 14px;
+	display: block;
+	height: 31px;
+	line-height: 31px;
+	padding: 0 14px;
+	text-decoration: none;
+}
+#main-menu li a:hover {
+	background: url("../img/hover.jpg") repeat-x;
+	border: 1px solid #0093d8;
+	color: #231f20;
+}
+#main-menu li a .indicator  {
+	background: url("../img/indicator.png") 0% 60% no-repeat;
+	padding: 4px;
+	position: relative;
+	left: 3px;
+}
+#main-menu li a .hover-indicator  {
+	background: url("../img/hover-indicator.png") 0% 60% no-repeat;
+}
+#main-menu .sub-menu {
+	display: none;
+	padding-top: 1px;
+	position: absolute;
+	width: 150px;
+}
+#main-menu .sub-menu li {
+	float: none; 
+	padding-bottom: 1px;
+}
+.prev{
+    
+}
+.next{
+    
+}
