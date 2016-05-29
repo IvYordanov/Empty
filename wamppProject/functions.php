@@ -148,7 +148,7 @@ function my_adminheader() {
                                                 }
 
                                                 function db_init() {
-                                                    mysql_connect('localhost', 'root', 'qwerty') or die('Няма връзка с сървъра!');
+                                                    mysql_connect('localhost', 'root', 'password') or die('Няма връзка с сървъра!');
                                                     mysql_select_db('mcf') or die('Немога да избера база данни!');
                                                 }
 
