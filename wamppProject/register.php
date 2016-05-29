@@ -14,7 +14,9 @@ if (!$_SESSION['is_logged'] == true) {
         $name = trim($_POST['name']);
 
         if (strlen($login) < 4) {
-            $error_array['login'] = 'Кратко име.Трябва да е поне 4 синвола!';
+            
+         $error_array['login'] = 'Кратко име.Трябва да е поне 4 синвола!';
+            
         }
 
         if (strlen($pas) < 4) {
@@ -22,7 +24,7 @@ if (!$_SESSION['is_logged'] == true) {
         }
 
         if ($pas != $pas2) {
-            $error_array['pass'] = 'Паролите не въпадат!';
+            $error_array['pass2'] = 'Паролите не въпадат!';
         }
 
         if (!preg_match("/^([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9\._-]+)+$/", $email)) {
@@ -41,11 +43,13 @@ if (!$_SESSION['is_logged'] == true) {
             if ($row['cnt'] == 0) {
                 mysql_query('INSERT INTO users (user_id,login,password,name,email,date_registerd)
 VALUES ("","' . addslashes($login) . '","' . md5($pas) . '","' . addslashes($name) . '","' . addslashes($email) . '",' . time() . ')');
+             
+     
                 if (mysql_error()) {
                     echo mysql_error();
-                    $error_array['name'] = '<h1>Грешка.Моля опитаите отново!</h1>';
+                    $error_array['name'] = 'Грешка.Моля опитаите отново!';
                 } else {
-                    header('Location: index.php');
+                    header('Location: regnote.php');
                     exit;
                 }
             } else {
@@ -54,53 +58,56 @@ VALUES ("","' . addslashes($login) . '","' . md5($pas) . '","' . addslashes($nam
             }
         }
     }
-    if ($error_array['name']) {
-        echo $error_array['name'];
-    }
+
     ?>
     <table border="0">
         <form action="register.php" method="post">
 
             <tr>   
-                <td> <b>Потребителско име:</b></td><td><input type="text" name="login" value="" /></td>
+                <td> <b>Потребителско име:</b></td><td><input type="text" name="login" value="" />
                 <?php
 
                 if ($error_array['login']) {
                     echo $error_array['login'];
                 }
                 ?>
+                    </td>
             <tr>
-                <td> <b>Парола:</b></td><td><input type="password" name="pass" value="" size="30" /></td>
+                <td> <b>Парола:</b></td><td><input type="password" name="pass" value="" size="30" />
                 <?php
 
                 if ($error_array['pass']) {
                     echo $error_array['pass'];
                 }
                 ?>
+                    </td>
             <tr>
-                <td> <b>Повтори паролата:</b></td><td><input type="password" name="pass2" value="" size="30" /></td>
+                <td> <b>Повтори паролата:</b></td><td><input type="password" name="pass2" value="" size="30" />
                 <?php
 
                 if ($error_array['pass2']) {
                     echo $error_array['pass2'];
                 }
                 ?>
+                    </td>
             <tr>
-                <td><b>Емейл адрес:</b></td><td><input type="text" name="mail" value="" /></td>
+                <td><b>Емейл адрес:</b></td><td><input type="text" name="mail" value="" />
                 <?php
 
                 if ($error_array['mail']) {
                     echo $error_array['mail'];
                 }
                 ?>
+                    </td>
             <tr>
-                <td> <b>Име:</b></td><td><input type="text" name="name" value="" /></td>
+                <td> <b>Име:</b></td><td><input type="text" name="name" value="" />
     <?php
 
     if ($error_array['name']) {
         echo $error_array['name'];
     }
     ?>
+                    </td>
             <tr>
                 <td colspan="2">
                     <input type="submit" name="Регистрирай се" value="Регистрирай се" />

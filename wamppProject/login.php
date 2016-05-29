@@ -20,10 +20,11 @@ if ($_POST['form_login'] == 1) {
                 exit();
             }
  else {
-                echo '<h1 style=text-align:center>Достъпът ви е спрян!!!</h1>';
+                echo 'Достъпът ви е спрян!!!';
  }
         } elseif (mysql_num_rows($rs) == 0) {
-            echo '<h1>Грешно име или парола!</h1>';
+            $errorname ='Грешно име или парола!';
+            
         } else {
             echo '<h1 style="text-align:center" color="red">FATAL ERROR!!!</h1>'; //ЗАПИСВАНЕ НА ДАННИТЕ НА ПОТРЕБИТЕЛЯ.
         }
@@ -34,7 +35,7 @@ if ($_POST['form_login'] == 1) {
 <form action='login.php' method="post">
     <table border="0">
         <tr>
-            <td> Потребителско име:</td><td><input type="text" name="login_name"></td>
+            <td> Потребителско име:</td><td><input type="text" name="login_name"><?php echo $errorname;?></td>
         <tr>
             <td>Парола:</td><td><input type="password" name="login_pass"></td>
         <tr>
