@@ -9,7 +9,7 @@ if ($_POST['form_login'] == 1) {
 
     if (strlen($login) > 3 && strlen($pass) > 3) {
         db_init();
-        $rs = mysql_query('SELECT * FROM users WHERE login = "' . addslashes($login) . '" AND password = "' . md5($pass) . '"');
+        $rs = run_q('SELECT * FROM users WHERE login = "' . addslashes($login) . '" AND password = "' . md5($pass) . '"');
 
         if (mysql_num_rows($rs) == 1) {
             $row = mysql_fetch_assoc($rs);

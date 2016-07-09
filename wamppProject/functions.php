@@ -33,6 +33,7 @@ function my_adminheader() {
                     <ul id="main-menu">
                         <li><a href="../index.php">Начало</a></li>
                         <li><a href="groups.php">Групи форуми</a></li>
+                        <li><a href="sub_groups.php">Под групи</a></li>
                         <li><a href="../aboutmy.php">За мен</a></li>
 
                         <li><a href="../logout.php">Изход</a></li>
@@ -148,8 +149,12 @@ function my_adminheader() {
                                                 }
 
                                                 function db_init() {
-                                                    mysql_connect('localhost', 'root', 'password') or die('Няма връзка с сървъра!');
+                                                    mysql_connect('localhost', 'root', 'qwerty') or die('Няма връзка с сървъра!');
                                                     mysql_select_db('mcf') or die('Немога да избера база данни!');
+                                                }
+                                                function run_q($sql){
+                                                    mysql_query('SET NAMES utf8');
+                                                    return mysql_query($sql);
                                                 }
 
                                                 function selectionMenu() {

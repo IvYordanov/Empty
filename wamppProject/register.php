@@ -38,10 +38,10 @@ if (!$_SESSION['is_logged'] == true) {
         if (!count($error_array) > 0) {
             db_init();
             $sql = 'SELECT COUNT(*) as cnt FROM users WHERE login="' . addslashes($login) . '" OR email="' . addslashes($email) . '"';
-            $res = mysql_query($sql);
+            $res = run_q($sql);
             $row = mysql_fetch_assoc($res);
             if ($row['cnt'] == 0) {
-                mysql_query('INSERT INTO users (user_id,login,password,name,email,date_registerd)
+               run_q('INSERT INTO users (user_id,login,password,name,email,date_registerd)
 VALUES ("","' . addslashes($login) . '","' . md5($pas) . '","' . addslashes($name) . '","' . addslashes($email) . '",' . time() . ')');
              
      
